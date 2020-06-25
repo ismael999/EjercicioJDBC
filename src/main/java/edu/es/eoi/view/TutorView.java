@@ -1,4 +1,4 @@
-package edu.es.oi.view;
+package edu.es.eoi.view;
 
 import java.util.Scanner;
 

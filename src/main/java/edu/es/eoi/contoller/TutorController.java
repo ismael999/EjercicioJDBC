@@ -2,8 +2,8 @@ package edu.es.eoi.contoller;
 
 import edu.es.eoi.entity.Tutor;
 import edu.es.eoi.service.TutorService;
-import edu.es.oi.view.MainMenu;
-import edu.es.oi.view.TutorView;
+import edu.es.eoi.view.MainMenu;
+import edu.es.eoi.view.TutorView;
 
 public class TutorController {
 	

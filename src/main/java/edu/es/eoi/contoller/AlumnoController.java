@@ -2,8 +2,8 @@ package edu.es.eoi.contoller;
 
 import edu.es.eoi.entity.Alumno;
 import edu.es.eoi.service.AlumnoService;
-import edu.es.oi.view.AlumnoView;
-import edu.es.oi.view.MainMenu;
+import edu.es.eoi.view.AlumnoView;
+import edu.es.eoi.view.MainMenu;
 
 public class AlumnoController {
 

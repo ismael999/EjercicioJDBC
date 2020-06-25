@@ -1,6 +1,6 @@
 package edu.es.eoi.app;
 
-import edu.es.oi.view.MainMenu;
+import edu.es.eoi.view.MainMenu;
 
 public class GestionInstituto {
 

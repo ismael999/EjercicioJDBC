@@ -1,8 +1,8 @@
 package edu.es.eoi.contoller;
 
-import edu.es.oi.view.AlumnoView;
-import edu.es.oi.view.CursoView;
-import edu.es.oi.view.TutorView;
+import edu.es.eoi.view.AlumnoView;
+import edu.es.eoi.view.CursoView;
+import edu.es.eoi.view.TutorView;
 
 public class MainMenuController {
 

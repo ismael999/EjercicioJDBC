@@ -6,8 +6,8 @@ import edu.es.eoi.entity.Alumno;
 import edu.es.eoi.entity.Curso;
 import edu.es.eoi.entity.Tutor;
 import edu.es.eoi.service.CursoService;
-import edu.es.oi.view.CursoView;
-import edu.es.oi.view.MainMenu;
+import edu.es.eoi.view.CursoView;
+import edu.es.eoi.view.MainMenu;
 
 public class CursoController {
 	
