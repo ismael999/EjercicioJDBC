@@ -7,8 +7,10 @@ import edu.es.eoi.view.TutorView;
 
 public class TutorController {
 	
+	// Instanciamos el servicio de Tutor
 	private TutorService service = new TutorService();
 	
+	// Controlador del menú de Tutor
 	public void menuController(int option){
 		switch (option) {
 		case 1:
@@ -24,6 +26,7 @@ public class TutorController {
 		}
 	}
 	
+	// Crea un tutor pasandole todos los datos necesarios (dni, nombre, mail, telefono).
 	public String create(String dni, String nombre, String mail, int telefono) {
 		if(service.create(new Tutor(dni, nombre, mail, telefono))) {
 			return "Tutor Creado.";
@@ -32,6 +35,7 @@ public class TutorController {
 		}
 	}
 	
+	// Borra un Tutor pasando su dni.
 	public String delete(String dni) {
 	
 		if(service.delete(dni)) {

@@ -7,8 +7,10 @@ import edu.es.eoi.view.MainMenu;
 
 public class AlumnoController {
 
+	// Instanciamos el servicio de Alumnos
 	private AlumnoService service = new AlumnoService();
 
+	// Método controlador del menu de Alumnos
 	public void menuController(int option) {
 
 		switch (option) {
@@ -38,10 +40,12 @@ public class AlumnoController {
 
 	}
 
+	// Busca por dni un Alumno.
 	public Alumno findByDni(String dni) {
 		return service.findByDni(dni);
 	}
-
+	
+	// Crea un Alumno pasandole un Objeto de tipo Alumno
 	public String create(Alumno alumno) {
 
 		if (service.create(alumno)) {
@@ -52,16 +56,18 @@ public class AlumnoController {
 
 	}
 
+	// Modifica un Alumno pasandole un dni, el nombre y los apellidos
 	public String modify(String dni, String nombre, String apellidos) {
 
 		if (service.update(dni, nombre, apellidos)) {
 			return "> Usuario actualizado.";
 		} else {
-			return "> Error al actualizar el usuario, es probable que el DNI introducido sea incorrecto.";
+			return "> Error al actualizar el usuario, es posible que el DNI introducido sea incorrecto.";
 		}
 
 	}
 
+	// Borra un Alumno pasandole un dni.
 	public String delete(String dni) {
 
 		if (service.delete(dni)) {

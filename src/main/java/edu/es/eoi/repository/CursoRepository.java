@@ -12,7 +12,8 @@ import edu.es.eoi.entity.Curso;
 import edu.es.eoi.utility.DataBase;
 
 public class CursoRepository {
-
+	// Cada curso tiene un ID que a la vez es el nombre del curso.
+	
 	private Connection openConnection() {
 
 		Connection con = null;
@@ -27,6 +28,7 @@ public class CursoRepository {
 		return con;
 	}
 
+	// Obtiene un Curso pasando su id
 	public Curso findById(String id) {
 		Connection conn = openConnection();
 		
@@ -48,6 +50,7 @@ public class CursoRepository {
 		
 	}
 	
+	// Crea un curso pasandole un Objeto de tipo Curso.
 	public boolean create(Curso curso) {
 		Connection conn = openConnection();
 
@@ -71,6 +74,7 @@ public class CursoRepository {
 		}
 	}
 	
+	// Borra un curso parando su id.
 	public boolean delete (String id) {
 		Connection conn = openConnection();
 		int res1 = 0;
@@ -96,6 +100,7 @@ public class CursoRepository {
 		}
 	}
 
+	// Añade un Alumno al curso pasando el id y el dni del alumno.
 	public boolean addAlumno(String id, String dni_alumno) {
 		Connection conn = openConnection();
 		int res = 0;
@@ -119,6 +124,8 @@ public class CursoRepository {
 		}
 	}
 	
+	// Asigna un tutor al curso pasando el id y el dni del tutor
+	// Si el curso ya tiene un tutor lo reemplaza
 	public boolean addTutor (String id, String tutor){
 		Connection conn = openConnection();
 		int res = 0;
@@ -142,6 +149,7 @@ public class CursoRepository {
 		}
 	}
 	
+	// Obtiene una Lista con todos los cursos.
 	public List<Curso> findAllCurso(){
 		Connection conn = openConnection();
 		List<Curso> cursos = new ArrayList<Curso>();

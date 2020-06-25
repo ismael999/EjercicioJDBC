@@ -24,6 +24,7 @@ public class TutorRepository {
 		return con;
 	}
 
+	// Obtiene un tutor pasando su dni
 	public Tutor findByDni(String dni) {
 		Connection conn = openConnection();
 		Tutor tutor = null;
@@ -45,6 +46,7 @@ public class TutorRepository {
 		return tutor;
 	}
 	
+	// Crea un tutor pasando un Objeto de tipo tutor.
 	public boolean create(Tutor tutor) {
 		Connection conn = openConnection();
 
@@ -72,6 +74,7 @@ public class TutorRepository {
 
 	}
 
+	// Borra un tutor pasando su dni.
 	public boolean delete (String dni) {
 		Connection conn = openConnection();
 		int res1 = 0;
@@ -100,6 +103,7 @@ public class TutorRepository {
 		}
 	}
 	
+	// Obtiene el tutor de un curso pasando el id del curso.
 	public Tutor getTutorFromCurso(String id) {
 		Connection conn = openConnection();
 		Tutor tutor = null;

@@ -6,6 +6,7 @@ import edu.es.eoi.view.TutorView;
 
 public class MainMenuController {
 
+	// Controlador del Menú principal.
 	public void menuController(int option) {
 		
 		switch (option) {

@@ -87,17 +87,23 @@ public class CursoView {
 		}
 	}
 	
+	// Listar todos los cursos.
 	public static void listCursoView() {
+		// 1º Obtenemos todos los cursos
 		List<Curso> cursos = controller.getAll();
 		System.out.println("\n*************** Cursos ***************");
 		for (Curso curso : cursos) {
-			String tutor = "Sin tutor";
-			if(controller.getTutorFromCurso(curso.getId()) != null) {
-				tutor = controller.getTutorFromCurso(curso.getId()).getNombre();
+			// 2º Obtenemos el tutor del curso.
+			Tutor tutor = controller.getTutorFromCurso(curso.getId());
+			String nombreTutor = "Sin tutor";
+			// Si el curso no tiene tutor mostraremos "Sin tutor".
+			if(tutor != null) {
+				nombreTutor = controller.getTutorFromCurso(curso.getId()).getNombre();
 			}
+			// 3º Obtenemos la lista de los alumnos del curso
 			List<Alumno> alumnos = controller.getAlumnosFromCurso(curso.getId());
 			
-			System.out.println("> Curso: " + curso.getId() + " | Tutor: " + tutor);
+			System.out.println("> Curso: " + curso.getId() + " | Tutor: " + nombreTutor);
 			
 			for (Alumno alumno : alumnos) {
 				System.out.println("    => Nombre: " + alumno.getNombre() + " " + alumno.getApellidos() + " | DNI: " + alumno.getDni());

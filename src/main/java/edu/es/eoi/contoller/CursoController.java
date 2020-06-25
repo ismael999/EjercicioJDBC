@@ -11,8 +11,10 @@ import edu.es.eoi.view.MainMenu;
 
 public class CursoController {
 	
+	// Instanciamos el servicio de Curso
 	private CursoService service = new CursoService();
 	
+	// Controlador del menu de Curso
 	public void menuController(int option) {
 		switch (option) {
 		case 1:
@@ -39,6 +41,7 @@ public class CursoController {
 		}
 	}
 	
+	// Crea un Curso pasandole un ID (Nombre del curso).
 	public String create(String id) {
 		if(service.create(new Curso(id))) {
 			return "Curso creado.";
@@ -47,6 +50,7 @@ public class CursoController {
 		}
 	}
 	
+	// Borra un curso pasandole un id (Nombre del curso).
 	public String delete(String id) {
 		if(service.delete(id)) {
 			return "Curso borrado.";
@@ -55,6 +59,7 @@ public class CursoController {
 		}
 	}
 	
+	// Añade un Alumno a un curso pasandole el id del curso y el dni del alumno
 	public String addAlumno(String id_curso, String dni_alumno) {
 		if(service.addAlumno(id_curso, dni_alumno)) {
 			return "Alumno añadido al curso.";
@@ -63,6 +68,8 @@ public class CursoController {
 		}
 	}
 	
+	// Añade un tutor a un curso pasando el id del curso y el dni del tutor.
+	// Si el curso ya tiene un tutor lo reemplaza.
 	public String addTutor(String id, String tutor) {
 		if(service.addTutor(id, tutor)) {
 			return "Tutor añadido al curso.";
@@ -71,14 +78,17 @@ public class CursoController {
 		}
 	}
 	
+	// Obtiene la lista de alumnos que contiene un curso pasandole el id.
 	public List<Alumno> getAlumnosFromCurso(String id){
 		return service.getAlumnos(id);
 	}
 	
+	// Obtiene el tutor de un curso pasando el id.
 	public Tutor getTutorFromCurso(String id) {
 		return service.getTutor(id);
 	}
 	
+	// Obtiene todos los cursos.
 	public List<Curso> getAll(){
 		return service.findAll();
 	}

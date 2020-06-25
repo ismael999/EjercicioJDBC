@@ -13,11 +13,13 @@ import edu.es.eoi.utility.DataBase;
 
 public class AlumnoRepository {
 
+	// Método que abre la conexión con la base de datos
 	private Connection openConnection() {
 
 		Connection con = null;
 
 		try {
+			// Los datos de la base de datos están en un ENUM (edu.es.eoi.utility).
 			con = DriverManager.getConnection(DataBase.URL.getData(), DataBase.USER.getData(), DataBase.PASS.getData());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -27,6 +29,7 @@ public class AlumnoRepository {
 		return con;
 	}
 
+	// Busca un alumno pasando su dni
 	public Alumno findByDni(String dni) {
 		Connection conn = openConnection();
 
@@ -39,7 +42,8 @@ public class AlumnoRepository {
 			rs = pst.executeQuery();
 
 			if (rs.next()) {
-				alumno = new Alumno(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellidos"), rs.getInt("edad"), rs.getString("id_curso"));
+				alumno = new Alumno(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellidos"),
+						rs.getInt("edad"), rs.getString("id_curso"));
 			}
 
 			conn.close();
@@ -51,6 +55,7 @@ public class AlumnoRepository {
 		return alumno;
 	}
 
+	// Obtiene todos los alumnos.
 	public List<Alumno> findAll() {
 		Connection conn = openConnection();
 
@@ -71,6 +76,7 @@ public class AlumnoRepository {
 		return alumnos;
 	}
 
+	// crea un alumno pasandole un Objeto de tipo Alumno.
 	public boolean create(Alumno alumno) {
 		Connection conn = openConnection();
 
@@ -99,6 +105,7 @@ public class AlumnoRepository {
 
 	}
 
+	// Borra un alumno pasandole su dni.
 	public boolean delete(String dni) {
 		Connection conn = openConnection();
 		PreparedStatement pst = null;
@@ -122,6 +129,7 @@ public class AlumnoRepository {
 		}
 	}
 
+	// Actualiza un alumno pasando su dni, el nombre y sus apellidos
 	public boolean update(String dni, String nombre, String apellidos) {
 		Connection conn = openConnection();
 
@@ -148,26 +156,28 @@ public class AlumnoRepository {
 			return false;
 		}
 	}
-	
-	public List<Alumno> getAlumnosFromCurso(String id){
+
+	// Obtiene todos los alumnos de un curso pasando el id del curso.
+	public List<Alumno> getAlumnosFromCurso(String id) {
 		Connection conn = openConnection();
 		List<Alumno> alumnos = new ArrayList<Alumno>();
-		
+
 		try {
 			PreparedStatement pst = conn.prepareStatement("SELECT * FROM alumno WHERE id_curso LIKE ?");
 			pst.setString(1, id);
-			
+
 			ResultSet rs = pst.executeQuery();
-			
-			while(rs.next()) {
-				alumnos.add(new Alumno(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellidos"), rs.getInt("edad")));
+
+			while (rs.next()) {
+				alumnos.add(new Alumno(rs.getString("dni"), rs.getString("nombre"), rs.getString("apellidos"),
+						rs.getInt("edad")));
 			}
-			
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-		
+
 		return alumnos;
 	}
 }
